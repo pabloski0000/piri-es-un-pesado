@@ -1,6 +1,6 @@
 ### Included by Astro ###
 # build output
-# dist/
+dist/
 .cache
 # dependencies
 node_modules/
