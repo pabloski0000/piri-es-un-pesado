@@ -24,18 +24,36 @@ const {
     {TRANSITION_API && <ViewTransitions />}
   </head>
   <body>
-    <div class="bg-base-100 drawer lg:drawer-open">
+    <div class="page">
+      <slot />
+      <Footer />
+    </div>
+    <!-- <div class="bg-base-100 drawer lg:drawer-open">
       <input id="my-drawer" type="checkbox" class="drawer-toggle" />
-      <div class="drawer-content bg-base-100">
+      <div class="drawer-content bg-base-100 page">
         <Header title={SITE_TITLE} />
         <div class="md:flex md:justify-center">
-          <main class="p-6 pt-10 lg:max-w-[900px] max-w-[100vw]">
+          <main class="lg:max-w-[900px] max-w-[100vw]">
             <slot />
           </main>
         </div>
         <Footer />
       </div>
       {includeSidebar && <SideBar sideBarActiveItemID={sideBarActiveItemID} />}
-    </div>
+    </div> -->
   </body>
 </html>
+
+<style>
+  .page {
+    min-height: 100vh;
+    background: linear-gradient(120deg, #A7A7A7 0%, #C0C0C0 18%,#FFFFFF 50%, #C0C0C0 82%, #A7A7A7 100%);
+  }
+  @media (max-width:960px) {
+    .page {
+      /* background: linear-gradient(95deg, #A7A7A7 0%, #C0C0C0 18%,#FFFFFF 50%, #C0C0C0 82%, #A7A7A7 100%); */
+      background: repeating-linear-gradient(120deg, #A7A7A7 0vw, #C0C0C0 55vw,#FFFFFF 100vw, #C0C0C0 145vw, #A7A7A7 200vw);
+    }
+  }
+
+</style>

@@ -8,6 +8,9 @@ import Image from "astro/components/Image.astro";
 import MailIcon from "src/images/MailIcon.astro";
 import GitHubIcon from "../images/GitHubIcon.astro"
 import ListaDeLaCompraFoto from "../images/lista-de-la-compra-foto2.png"
+import RapidjobsSnapshot from "../../public/rapidjobs-snapshot2.jpg"
+import PersonalPhoto from "../../public/foto-personal-recortada.jpg"
+import Experience from "@components/Experience.astro";
 
 const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
@@ -15,70 +18,103 @@ const last_posts = posts.slice(0, 3);
 ---
 
 <BaseLayout sideBarActiveItemID="home">
-  <div class="pb-12 mt-5">
-    <!--<div class="text-xl py-1">Muy buenas 👋</div>-->
-    <!--
-      <div class="foto-container">
-        <img class="foto" src="/profile.webp"/>
+  <!-- <div class="text-xl py-1">Muy buenas 👋</div> -->
+  <main>
+    <div class="presentation">
+      <div class="foto-container-recortada">
+        <!-- <img class="foto-recortada" src="../../public/foto-personal-recortada.jpg"/> -->
+         <Image class={"foto-recortada"} alt={"Pernal photo"} src={PersonalPhoto}/>
       </div>
-     -->
-    <div class="icons-bar">
-      <a href="mailto:plajommj000@gmail.com" target="_blank" class="icon-container">
-        <MailIcon class="icon mail-icon"/>
-      </a>
-      <a href="https://www.linkedin.com/in/pablo-mendez-jimenez-33349a18b/" target="_blank" class="icon-container">
-        <LinkedInIcon class="icon"/>
-      </a>
-      <a href="https://github.com/pabloski0000" target="_blank" class="icon-container">
-        <GitHubIcon class="icon github-icon"/>
-      </a>
-    </div>
-    <h1 class="text-5xl font-bold mb-3">Pablo Méndez</h1>
-    <!--<div class="title">
-      <h1 class="text-5xl font-bold">I'm Manuel Ernesto</h1>
-      <div class="foto-container">
-        <img class="foto" src="/profile.webp"/>
+      <div class="icons-bar">
+        <a href="mailto:plajommj000@gmail.com" target="_blank" class="icon-container">
+          <MailIcon class="icon mail-icon"/>
+        </a>
+        <a href="https://www.linkedin.com/in/pablo-mendez-jimenez-33349a18b/" target="_blank" class="icon-container">
+          <LinkedInIcon class="icon"/>
+        </a>
+        <a href="https://github.com/pabloski0000" target="_blank" class="icon-container">
+          <GitHubIcon class="icon github-icon"/>
+        </a>
       </div>
-    </div>-->
-    <!-- <div class="text-3xl font-bold py-3 mb-1 pb-0">Desarrollador Full Stack y Android</div> -->
-    <div class="pb-2">
-      <text class="text-lg">
-        2 años de <b>experiencia</b> como desarrollador <b>Full Stack</b> y <b>Android</b>. Track record de desarrollo de productos de software para empresas privadas, el sector público y cliente directo. Experiencia tanto empresarial como freelance a niveles nacional e internacional.
-      </text>
+      <h1 class="text-5xl font-bold mb-3 name">Pablo Méndez</h1>
+      <!--<div class="title">
+        <h1 class="text-5xl font-bold">I'm Manuel Ernesto</h1>
+        <div class="foto-container">
+          <img class="foto" src="/profile.webp"/>
+        </div>
+      </div>-->
+      <!-- <div class="text-3xl font-bold py-3 mb-1 pb-0">Desarrollador Full Stack y Android</div> -->
+      <div class="pb-2 description">
+        <p class="text-lg">
+          2 años de <b>experiencia</b> como desarrollador <b>Full-Stack</b> y <b>Android</b>. Track record de desarrollo de productos de software para empresas privadas, el sector público y cliente directo. Experiencia tanto empresarial como freelance a niveles nacional e internacional.
+        </p>
+      </div>
     </div>
-  </div>
-
-  <div>
-    <div class="text-3xl w-full font-bold mb-2">Proyectos personales {"</>"}</div>
-  </div>
-
-  <HorizontalCard
-    title="Lista de la compra compartida"
-    img={ListaDeLaCompraFoto}
-    desc={`PWA para iOS y Android. Se desarrolló para solucionar problemas de coordinación en grupos de más dos personas.
-     En mi caso vino a solucionar problemas de organización familiar`}
-    url="https://github.com/pabloski0000/lista-de-la-compra-backend"
-    badge="NUEVO"
-  />
-  <div class="divider my-0"></div>
+    <div class="experience">
+      <Experience/>
+    </div>
+  
+    <div>
+      <div class="text-3xl w-full font-bold mb-2">Proyectos personales {"</>"}</div>
+    </div>
+    <HorizontalCard
+      title="Lista de la compra compartida"
+      img={ListaDeLaCompraFoto}
+      desc={`PWA para iOS y Android. Se desarrolló para solucionar problemas de coordinación en grupos de más dos personas`}
+      url="https://github.com/pabloski0000/lista-de-la-compra-backend"
+    />
+    <HorizontalCard
+      title="RapidJobs"
+      img={RapidjobsSnapshot}
+      desc={`Te permite automatizar búsquedas de trabajo para que siempre las tengas al alcance de un solo sitio web`}
+      url="https://github.com/pabloski0000/lista-de-la-compra-back<end"
+    />
+  </main>
 </BaseLayout>
 
 <style>
+  main {
+    width: 50%;
+    margin: 0 auto;
+    padding-top: 32px;
+  }
+  .presentation {
+    margin-bottom: 5rem;
+  }
+  .experience {
+    margin-bottom: 5rem;
+  }
   .title {
     display: flex;
     align-items: center;
   }
   .foto-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex: 1 0 150px;
-    height: 100px;
-    margin-bottom: 0px;
+    margin: 0 auto 30px auto;
+    position: relative;
+    height: 117px;
+    width: 117px;
+    border-radius: 50%;
+    overflow: hidden;
   }
   .foto {
-    border-radius: 999px;
-    height: 100%;
+    position: absolute;
+    top: 65px;
+    left: 6px;
+    scale: 3.5;
+  }
+  .foto-container-recortada {
+    margin: 0 auto 30px auto;
+    position: relative;
+    height: 117px;
+    width: 117px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  .foto {
+    position: absolute;
+    top: 65px;
+    left: 6px;
+    scale: 3.5;
   }
   .icons-bar {
     display: flex;
@@ -86,7 +122,7 @@ const last_posts = posts.slice(0, 3);
     align-items: center;
     gap: 50px;
     height: 50px;
-    margin-bottom: 20px;
+    margin-bottom: 2rem;
   }
   .icon-container {
     height: 44px;
@@ -99,18 +135,24 @@ const last_posts = posts.slice(0, 3);
   .icon {
     width: 100%;
     height: auto;
-    transition-duration: 50ms;
+    transition-duration: 150ms;
+    transition-timing-function: ease-in-out;
     box-sizing: content-box;
   }
   @media(hover: hover) and (pointer: fine) {
     .icon:hover {
-      transition-duration: 100ms;
-      scale: 1.4;
+      scale: 1.3;
     }
   }
   @media (min-width:320px)  { /* smartphones, iPhone, portrait 480x320 phones */ }
-  @media (min-width:481px)  { /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */ }
-  @media (min-width:641px)  { /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */ }
+  @media (max-width:480px)  {}
+  @media (max-width:640px)  {
+    main {
+      width: 100%;
+      padding-left: 20px;
+      padding-right: 10px;
+    }
+  }
   @media (min-width:961px)  { /* tablet, landscape iPad, lo-res laptops ands desktops */ }
   @media (min-width:1025px) { /* big landscape tablets, laptops, and desktops */ }
   @media (min-width:1281px) { /* hi-res laptops and desktops */ }

@@ -1,0 +1,44 @@
+---
+import ExperienceItem from "./ExperienceItem.astro"
+
+const EXPERIENCE = [
+  {
+    role: "Desarrollador Full-Stack",
+    company: "Odyn AI",
+    description: "Responsable del desarrollo y mantenimiento de un modelo del lenguaje para entidades privadas",
+    location: "San Francisco, California, EEUU",
+    date: "Febrero 2023 - Actualmente",
+  },
+  {
+    role: "Desarrollador de aplicaciones móviles",
+    company: "Freelance",
+    description: "Responsable del desarrollo de apps nativas para Android con Kotlin o multiplataforma (Android e iOS) con KMM (Kotlin Multiplatform Mobile)",
+    location: "Remoto",
+    date: "Diciembre 2022 - Febrero 2023",
+  },
+  {
+    role: "Desarrollador Backend",
+    company: "Capgemini",
+    description: "Responsable del mantenimiento del backend de un restaurante para la entrega de pedidos",
+    location: "Murcia, España",
+    date: "Septiembre 2021 - Diciembre 2021",
+  },
+  {
+    role: "Desarrollador Backend",
+    company: "NTT DATA",
+    description: "Responsable del desarrollo de evolutivos mayores (estimación mayor a las 80 horas) para RENFE",
+    location: "Murcia, España",
+    date: "Abril 2021 - Septiembre 2021",
+  },
+]
+---
+
+<ol class="relative mt-16">
+  {
+    EXPERIENCE.map((experiencie) => (
+      <li class="">
+        <ExperienceItem {...experiencie} />
+      </li>
+    ))
+  }
+</ol>
