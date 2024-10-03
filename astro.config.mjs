@@ -7,5 +7,10 @@ import tailwind from "@astrojs/tailwind";
 export default defineConfig({
   site: 'https://astrofy-template.netlify.app',
   integrations: [mdx(), sitemap(), tailwind()],
-  // outDir: 'docs'
+  outDir: 'docs',
+  vite: {
+    build: {
+      assetsDir: "ass"
+    }
+  }
 });

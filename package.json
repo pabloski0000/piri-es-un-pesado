@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build",
+    "build": "astro build && mv docs/_astro docs/astro",
     "preview": "astro preview",
     "astro": "astro"
   },
