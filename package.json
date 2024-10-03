@@ -1,6 +1,6 @@
 {
   "name": "astrofy",
-  "description": "This is my personal portfolio website built with Astro, CSS and TailwindCSS",
+  "description": "My personal portfolio website built with Astro, CSS and TailwindCSS",
   "type": "module",
   "version": "3.0.0",
   "private": true,
