@@ -8,9 +8,5 @@ export default defineConfig({
   site: 'https://astrofy-template.netlify.app',
   integrations: [mdx(), sitemap(), tailwind()],
   outDir: 'docs',
-  vite: {
-    build: {
-      assetsDir: "ass"
-    }
-  }
+  base: "/portfolio.github.io/"
 });
