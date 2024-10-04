@@ -1,7 +1,7 @@
 ---
 import ExperienceItem from "./ExperienceItem.astro"
 
-const EXPERIENCE = [
+const EXPERIENCIA_EN_ESPANYOL = [
   {
     role: "Desarrollador Full-Stack",
     company: "Odyn AI",
@@ -26,19 +26,60 @@ const EXPERIENCE = [
   {
     role: "Desarrollador Backend",
     company: "NTT DATA",
-    description: "Responsable del desarrollo de evolutivos mayores (estimación mayor a las 80 horas) para RENFE",
+    description: "Responsable del desarrollo de evolutivos mayores (mayor a las 80 horas) para RENFE",
     location: "Murcia, España",
     date: "Abril 2021 - Septiembre 2021",
   },
 ]
+const EXPERIENCIA_EN_INGLES = [
+  {
+    role: "Full-Stack Developer",
+    company: "Odyn AI",
+    description: "Responsible for the development and maintenance of a language model for private companies",
+    location: "San Francisco, California, USA",
+    date: "Febrero 2023 - Currently",
+  },
+  {
+    role: "Mobile Application Developer",
+    company: "Freelance",
+    description: "Responsible for the development of native apps for Android with Kotlin or cross-platform (Android and iOS) with KMM (Kotlin Multiplatform Mobile)",
+    location: "Remote",
+    date: "December 2022 - February 2023",
+  },
+  {
+    role: "Backend Developer",
+    company: "Capgemini",
+    description: "Responsible for maintaining the backend of a restaurant for order delivery",
+    location: "Murcia, Spain",
+    date: "September 2021 - December 2021",
+  },
+  {
+    role: "Backend Developer",
+    company: "NTT DATA",
+    description: "Responsible for the development of major evolutionary developments (more than 80 hours) for RENFE (Spanish train owner)",
+    location: "Murcia, Spain",
+    date: "April 2021 - September 2021",
+  },
+]
 ---
 
-<ol class="relative mt-16">
-  {
-    EXPERIENCE.map((experiencie) => (
-      <li class="">
-        <ExperienceItem {...experiencie} />
-      </li>
-    ))
-  }
-</ol>
+<div>
+  <ol class="relative mt-16 espanyol">
+    {
+      EXPERIENCIA_EN_ESPANYOL.map((experiencie) => (
+        <li class="">
+          <ExperienceItem {...experiencie} />
+        </li>
+      ))
+    }
+  </ol>
+  <ol class="relative mt-16 ingles">
+    {
+      EXPERIENCIA_EN_INGLES.map((experiencie) => (
+        <li class="">
+          <ExperienceItem {...experiencie} />
+        </li>
+      ))
+    }
+  </ol>
+</div>

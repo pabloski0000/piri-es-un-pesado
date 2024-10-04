@@ -42,6 +42,25 @@ const {
       {includeSidebar && <SideBar sideBarActiveItemID={sideBarActiveItemID} />}
     </div> -->
   </body>
+  <script>
+    const main = document.getElementsByTagName("main")[0]
+    const idiomaEspanyol: HTMLDivElement = document.getElementsByClassName("idioma-espanyol")[0] as HTMLDivElement
+    const idiomaIngles = document.getElementsByClassName("idioma-ingles")[0]
+    idiomaEspanyol.addEventListener("click", () => {
+      if (! idiomaEspanyol.className.includes("idioma-seleccionado")) {
+        idiomaIngles.className = idiomaIngles.className.replace("idioma-seleccionado", "")
+        idiomaEspanyol.className = idiomaEspanyol.className + " idioma-seleccionado"
+        main.className = main.className.replace("ingles", "espanyol")
+      }
+    })
+    idiomaIngles.addEventListener("click", () => {
+      if (! idiomaIngles.className.includes("idioma-seleccionado")) {
+        idiomaEspanyol.className = idiomaEspanyol.className.replace("idioma-seleccionado", "")
+        idiomaIngles.className = idiomaIngles.className + " idioma-seleccionado"
+        main.className = main.className.replace("espanyol", "ingles")
+      }
+    })
+  </script>
 </html>
 
 <style>

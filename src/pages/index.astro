@@ -15,20 +15,20 @@ import Espanya from "../../public/bandera-redondeada-espanya.png"
 import Experience from "@components/Experience.astro";
 
 const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-
+const idiomaByDefault = "espanyol"
 const last_posts = posts.slice(0, 3);
 ---
 
 <BaseLayout sideBarActiveItemID="home">
   <div class="elegir-idioma">
-    <div class="idioma-espanyol idioma-seleccionado">
+    <div class="interruptores-para-idioma idioma-espanyol idioma-seleccionado">
       <Image class={"banderas"} alt={"Bandera de España"} src={Espanya}/>
     </div>
-    <div class="idioma-ingles">
+    <div class="interruptores-para-idioma idioma-ingles">
       <Image class={"banderas"} alt={"Bandera de Estados Unidos"} src={EstadosUnidos}/>
     </div>
   </div>
-  <main class="espanyol">
+  <main class:list={[idiomaByDefault]}>
     <div class="presentation">
       <div class="header">
         <div class="white-space"></div>
@@ -71,17 +71,20 @@ const last_posts = posts.slice(0, 3);
   </main>
 </BaseLayout>
 
-<style>
-  main {
-    width: 50%;
-    margin: 0 auto;
-    padding-top: 32px;
-  }
+<style is:global>
   main.espanyol .ingles {
     display: none;
   }
   main.ingles .espanyol {
     display: none;
+  }
+</style>
+
+<style>
+  main {
+    width: 50%;
+    margin: 0 auto;
+    padding-top: 32px;
   }
   .header {
     display: grid;
@@ -115,11 +118,9 @@ const last_posts = posts.slice(0, 3);
     margin: 4px;
     transition: all 0.2s ease-out;
   }
-  .idioma-espanyol.idioma-seleccionado {
-
-  }
-  .banderas:hover {
+  .interruptores-para-idioma:hover .banderas {
     transform: scale(1.18);
+    cursor: pointer;
   }
   .experience {
     margin-bottom: 5rem;
