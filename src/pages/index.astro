@@ -10,6 +10,8 @@ import GitHubIcon from "../images/GitHubIcon.astro"
 import ListaDeLaCompraFoto from "../images/lista-de-la-compra-foto2.png"
 import RapidjobsSnapshot from "../../public/rapidjobs-snapshot2.jpg"
 import PersonalPhoto from "../../public/foto-personal-recortada.jpg"
+import EstadosUnidos from "../../public/bandera-redondeada-estados-unidos.png"
+import Espanya from "../../public/bandera-redondeada-espanya.png"
 import Experience from "@components/Experience.astro";
 
 const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
@@ -18,12 +20,22 @@ const last_posts = posts.slice(0, 3);
 ---
 
 <BaseLayout sideBarActiveItemID="home">
-  <!-- <div class="text-xl py-1">Muy buenas 👋</div> -->
-  <main>
+  <div class="elegir-idioma">
+    <div class="idioma-espanyol idioma-seleccionado">
+      <Image class={"banderas"} alt={"Bandera de España"} src={Espanya}/>
+    </div>
+    <div class="idioma-ingles">
+      <Image class={"banderas"} alt={"Bandera de Estados Unidos"} src={EstadosUnidos}/>
+    </div>
+  </div>
+  <main class="espanyol">
     <div class="presentation">
-      <div class="foto-container-recortada">
-        <!-- <img class="foto-recortada" src="../../public/foto-personal-recortada.jpg"/> -->
-         <Image class={"foto-recortada"} alt={"Personal photo"} src={PersonalPhoto}/>
+      <div class="header">
+        <div class="white-space"></div>
+        <div class="foto-container-recortada">
+          <!-- <img class="foto-recortada" src="../../public/foto-personal-recortada.jpg"/> -->
+           <Image class={"foto-recortada"} alt={"Personal photo"} src={PersonalPhoto}/>
+        </div>
       </div>
       <div class="icons-bar">
         <a href="mailto:plajommj000@gmail.com" target="_blank" class="icon-container">
@@ -45,8 +57,11 @@ const last_posts = posts.slice(0, 3);
       </div>-->
       <!-- <div class="text-3xl font-bold py-3 mb-1 pb-0">Desarrollador Full Stack y Android</div> -->
       <div class="pb-2 description">
-        <p class="text-lg">
-          2 años de <b>experiencia</b> como desarrollador <b>Full-Stack</b> y <b>Android</b>. Track record de desarrollo de productos de software para empresas privadas, el sector público y cliente directo. Experiencia tanto empresarial como freelance a niveles nacional e internacional.
+        <p class="text-lg espanyol">
+          2 años de <b>experiencia</b> como desarrollador <b>Full-Stack</b> y <b>Android</b>. Track record de desarrollo de productos de software para el sector público y privado. Experiencia tanto empresarial como freelance a niveles nacional e internacional.
+        </p>
+        <p class="text-lg ingles">
+          2 years of <b>experience</b> as a <b>Full-Stack</b> and <b>Android</b> developer. Track record of software product development for the public and private sector. Both business and freelance experience at national and international levels.
         </p>
       </div>
     </div>
@@ -62,8 +77,49 @@ const last_posts = posts.slice(0, 3);
     margin: 0 auto;
     padding-top: 32px;
   }
+  main.espanyol .ingles {
+    display: none;
+  }
+  main.ingles .espanyol {
+    display: none;
+  }
+  .header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    place-items: center;
+    margin: 0 auto 30px auto;
+  }
   .presentation {
     margin-bottom: 5rem;
+  }
+  .elegir-idioma {
+    position: fixed;
+    right: 10%;
+    top: 5%;
+  }
+  .idioma-espanyol, .idioma-ingles {
+    display: inline-block;
+  }
+  .idioma-espanyol {
+    border-radius: 17px 0 0 17px;
+  }
+  .idioma-ingles {
+    border-radius: 0 17px 17px 0;
+  }
+  .idioma-seleccionado {
+    background-color: blue;
+  }
+  .banderas {
+    display: inline-block;
+    width: 50px;
+    margin: 4px;
+    transition: all 0.2s ease-out;
+  }
+  .idioma-espanyol.idioma-seleccionado {
+
+  }
+  .banderas:hover {
+    transform: scale(1.18);
   }
   .experience {
     margin-bottom: 5rem;
@@ -87,7 +143,6 @@ const last_posts = posts.slice(0, 3);
     scale: 3.5;
   }
   .foto-container-recortada {
-    margin: 0 auto 30px auto;
     position: relative;
     height: 117px;
     width: 117px;
