@@ -28,6 +28,14 @@ const last_posts = posts.slice(0, 3);
       <Image class={"banderas"} alt={"Bandera de Estados Unidos"} src={EstadosUnidos}/>
     </div>
   </div>
+  <div id="elegir-idioma-minimalista" class="elegir-idioma">
+    <label class="inline-flex items-center cursor-pointer">
+      <span class="idioma-espanyol mx-3 text-sm font-medium text-gray-900 dark:text-gray-700">Español</span>
+      <input type="checkbox" value="" class="switch-button sr-only peer" style="background-color: red;">
+      <div class="switch-frame relative w-11 h-6 peer-focus:outline-none dark:peer-focus:ring-blue-800 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600"></div>
+      <span class="idioma-ingles mx-3 text-sm font-medium text-gray-900 dark:text-gray-700">English</span>
+    </label>
+  </div>
   <main class:list={[idiomaByDefault]}>
     <div class="presentation">
       <div class="header">
@@ -99,6 +107,10 @@ const last_posts = posts.slice(0, 3);
     position: fixed;
     right: 10%;
     top: 5%;
+    z-index: 1;
+  }
+  #elegir-idioma-minimalista {
+    display: none;
   }
   .idioma-espanyol, .idioma-ingles {
     display: inline-block;
@@ -184,8 +196,6 @@ const last_posts = posts.slice(0, 3);
       scale: 1.3;
     }
   }
-  @media (min-width:320px)  { /* smartphones, iPhone, portrait 480x320 phones */ }
-  @media (max-width:480px)  {}
   @media (max-width:640px)  {
     main {
       width: 100%;
@@ -193,6 +203,36 @@ const last_posts = posts.slice(0, 3);
       padding-right: 10px;
     }
   }
+  @media (max-width: 900px) {
+    main {
+      padding-top: 85px;
+    }
+    .elegir-idioma {
+      display: none;
+    }
+    #elegir-idioma-minimalista {
+      display: block;
+      position: absolute;
+      right: 10%;
+      top: 5%;
+      z-index: 1;
+      padding-left: 1rem;
+      left: 1%;
+      top: 3%;
+    }
+    .switch-frame {
+      background: blue;
+    }
+    .switch-frame::after {
+      background-image: url("./bandera-redondeada-espanya.png");
+      background-size: cover;
+      scale: 1.3;
+    }
+    .switch-button:checked ~ div::after {
+      background-image: url("./bandera-redondeada-estados-unidos.png");
+    }
+  }
+  @media (min-width:320px)  { /* smartphones, iPhone, portrait 480x320 phones */ }
   @media (min-width:961px)  { /* tablet, landscape iPad, lo-res laptops ands desktops */ }
   @media (min-width:1025px) { /* big landscape tablets, laptops, and desktops */ }
   @media (min-width:1281px) { /* hi-res laptops and desktops */ }

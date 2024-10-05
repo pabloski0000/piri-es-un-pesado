@@ -44,22 +44,44 @@ const {
   </body>
   <script>
     const main = document.getElementsByTagName("main")[0]
-    const idiomaEspanyol: HTMLDivElement = document.getElementsByClassName("idioma-espanyol")[0] as HTMLDivElement
+    //Selección de idioma en pantallas grandes
+    const idiomaEspanyol = document.getElementsByClassName("idioma-espanyol")[0]
     const idiomaIngles = document.getElementsByClassName("idioma-ingles")[0]
     idiomaEspanyol.addEventListener("click", () => {
       if (! idiomaEspanyol.className.includes("idioma-seleccionado")) {
-        idiomaIngles.className = idiomaIngles.className.replace("idioma-seleccionado", "")
-        idiomaEspanyol.className = idiomaEspanyol.className + " idioma-seleccionado"
-        main.className = main.className.replace("ingles", "espanyol")
+        asignarIdiomaAPaginaWeb("espanyol")
       }
     })
     idiomaIngles.addEventListener("click", () => {
       if (! idiomaIngles.className.includes("idioma-seleccionado")) {
-        idiomaEspanyol.className = idiomaEspanyol.className.replace("idioma-seleccionado", "")
-        idiomaIngles.className = idiomaIngles.className + " idioma-seleccionado"
-        main.className = main.className.replace("espanyol", "ingles")
+        asignarIdiomaAPaginaWeb("ingles")
       }
     })
+    //Selección de idioma en pantallas pequeñas
+    const switchButton: HTMLInputElement = document.getElementsByClassName("switch-button")[0] as HTMLInputElement
+    switchButton.addEventListener("change", () => {
+      if (switchButton.checked) {
+        asignarIdiomaAPaginaWeb("ingles")
+      } else {
+        asignarIdiomaAPaginaWeb("espanyol")
+      }
+    })
+
+    function asignarIdiomaAPaginaWeb(idioma: "espanyol" | "ingles") {
+      if (! main.className.includes(idioma)) {
+        if (idioma === "espanyol") {
+          idiomaIngles.className = idiomaIngles.className.replace("idioma-seleccionado", "")
+          idiomaEspanyol.className = idiomaEspanyol.className + " idioma-seleccionado"
+          switchButton.checked = false
+          main.className = main.className.replace("ingles", "espanyol")
+        } else {
+          idiomaEspanyol.className = idiomaEspanyol.className.replace("idioma-seleccionado", "")
+          idiomaIngles.className = idiomaIngles.className + " idioma-seleccionado"
+          switchButton.checked = true
+          main.className = main.className.replace("espanyol", "ingles")
+        }
+      }
+    }
   </script>
 </html>
 
